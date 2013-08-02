@@ -3,7 +3,6 @@ class Bob
     TeenagerAnswer.new(text).answer
   end
 
-  private
   class TeenagerAnswer
     attr_reader :text
 
@@ -12,11 +11,15 @@ class Bob
     end
 
     def answer
-      return 'Fine. Be that way!' if message.empty?
-      return 'Woah, chill out!'   if message.shouting?
-      return 'Sure.'              if message.question?
-
-      'Whatever.'
+      if message.empty?
+        'Fine. Be that way!'
+      elsif message.shouting?
+        'Woah, chill out!'
+      elsif message.question?
+        'Sure.'
+      else
+        'Whatever.'
+      end
     end
 
     def message
